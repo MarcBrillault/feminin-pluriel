@@ -1,0 +1,21 @@
+{
+    "name": "embryo/feminin-pluriel",
+    "description": "A script made to adapt french sentences gender and pluralization",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Embryo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marc Brillault",
+            "email": "marc@brillault.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
