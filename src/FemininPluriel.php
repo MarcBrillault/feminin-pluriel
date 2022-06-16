@@ -4,18 +4,24 @@ namespace Embryo;
 
 class FemininPluriel
 {
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $feminine = false;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $plural = false;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $text;
 
-    const REGEX_FP = '#^(\(F?P?\))(.*)$#';
-    const REGEX_GENDER = '#\[(.*)\|(.*)\]#';
-    const REGEX_GENDER_PLURAL = '#\[(.*)\|(.*)\|(.*)\|(.*)\]#';
+    private const REGEX_FP = '#^(\(F?P?\))(.*)$#';
+    private const REGEX_GENDER = '#\[(.*)\|(.*)\]#U';
+    private const REGEX_GENDER_PLURAL = '#\[(.*)\|(.*)\|(.*)\|(.*)\]#U';
 
     public function adapt(string $text): string
     {
