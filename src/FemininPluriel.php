@@ -19,7 +19,7 @@ class FemininPluriel
      */
     private $text;
 
-    private const REGEX_FP = '#^(\(F?P?\))(.*)$#';
+    private const REGEX_FP = '#^(.*)(\([FP]{1,2}\))(.*)$#';
     private const REGEX_GENDER = '#\[(.*)\|(.*)\]#U';
     private const REGEX_GENDER_PLURAL = '#\[(.*)\|(.*)\|(.*)\|(.*)\]#U';
 
@@ -36,9 +36,9 @@ class FemininPluriel
     private function setFeminineAndPlural(): void
     {
         if (preg_match(self::REGEX_FP, $this->text, $matches)) {
-            $this->feminine = strpos($matches[1], 'F') !== false;
-            $this->plural = strpos($matches[1], 'P') !== false;
-            $this->text = trim($matches[2]);
+            $this->feminine = strpos($matches[2], 'F') !== false;
+            $this->plural = strpos($matches[2], 'P') !== false;
+            $this->text = trim(str_replace($matches[2], '', $this->text));
         }
     }
 

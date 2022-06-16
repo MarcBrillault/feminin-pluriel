@@ -41,9 +41,13 @@ final class FemininPlurielTest extends TestCase
             ['(F)Une voiture spécia[l|le|ux|les]', 'Une voiture spéciale'];
         yield 'A feminine plural name\'s adjective should be correct' =>
             ['(FP)Des voitures spécia[l|le|ux|les]', 'Des voitures spéciales'];
+        yield 'An inverted feminine plural name\'s adjective should be correct' =>
+            ['(PF)Des voitures spécia[l|le|ux|les]', 'Des voitures spéciales'];
         yield 'Several replacements can occur in the same sentence' =>
             ['(FP)Ce[t|tte|s|s] femmes [est|est|sont|sont] be[au|lle|aux|lles]', 'Ces femmes sont belles'];
         yield 'Several replacements can occur in the same sentence' =>
             ['(P)Ce[t|tte|s|s] hommes [est|est|sont|sont] be[au|lle|aux|lles]', 'Ces hommes sont beaux'];
+        yield 'A content with something before the plural information should be transformed as well' =>
+            ['Sacrebleu, (P)ce[|tte|s|s] hommes [est|est|sont|sont] be[au|lle|aux|lles] !', 'Sacrebleu, ces hommes sont beaux !'];
     }
 }
