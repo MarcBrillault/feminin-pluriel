@@ -50,4 +50,16 @@ final class FemininPlurielTest extends TestCase
         yield 'A content with something before the plural information should be transformed as well' =>
             ['Sacrebleu, (P)ce[|tte|s|s] hommes [est|est|sont|sont] be[au|lle|aux|lles] !', 'Sacrebleu, ces hommes sont beaux !'];
     }
+
+    /** @dataProvider splitProvider */
+    public function testSplit(string $source, array $expected): void
+    {
+        $this->assertEquals($expected, $this->femininPluriel->split($source));
+    }
+
+    public function splitProvider(): \Generator
+    {
+        yield 'A string with no marker should return itself encased in an array' => ['Des chips', ['Des chips']];
+        yield 'A string with the marker at the beginning should return an array with two elements' => ['(P)Des chips', ['(P)', 'Des chips']];
+    }
 }

@@ -22,6 +22,7 @@ class FemininPluriel
     private const REGEX_FP = '#^(.*)(\([FP]{1,2}\))(.*)$#';
     private const REGEX_GENDER = '#\[(.*)\|(.*)\]#U';
     private const REGEX_GENDER_PLURAL = '#\[(.*)\|(.*)\|(.*)\|(.*)\]#U';
+    private const MARKER = '#^(.*)(\([FP]{1,2}\))(.*)$#';
 
     public function adapt(string $text): string
     {
@@ -68,5 +69,25 @@ class FemininPluriel
             },
             $this->text
         );
+    }
+
+    /**
+     * Returns an array separating the marker (FP) of the rest of the text
+     * The returned array can either have :
+     *  - one element when no marker has been found
+     *  - two elements when the marker is at the beginning of the text
+     *  - three elements when the marker is in the middle of the text
+     *
+     * @return list<string>
+     */
+    public function split(string $str): array
+    {
+        if (preg_match(self::MARKER, $str, $matches)) {
+            unset($matches[0]);
+            return array_values(array_filter($matches));
+        }
+
+
+        return [$str];
     }
 }
