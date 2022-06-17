@@ -61,5 +61,6 @@ final class FemininPlurielTest extends TestCase
     {
         yield 'A string with no marker should return itself encased in an array' => ['Des chips', ['Des chips']];
         yield 'A string with the marker at the beginning should return an array with two elements' => ['(P)Des chips', ['(P)', 'Des chips']];
+        yield 'A string with the marker in the middle of the text should return an array with three elements' => ['On va manger (P)des chips', ['On va manger ', '(P)', 'des chips']];
     }
 }
