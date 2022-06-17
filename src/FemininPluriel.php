@@ -78,7 +78,7 @@ class FemininPluriel
      *  - two elements when the marker is at the beginning of the text
      *  - three elements when the marker is in the middle of the text
      *
-     * @return list<string>
+     * @return string[]
      */
     public function split(string $str): array
     {
